@@ -12,10 +12,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+// connect DB
 connectDB();
 
 
+app.use("/api/v1/auth", require("./routes/auth"));
+app.use("/api/v1/tasks", require("./routes/task"));
+
+// test route
 app.get("/", (req, res) => {
   res.send("API Running");
 });
